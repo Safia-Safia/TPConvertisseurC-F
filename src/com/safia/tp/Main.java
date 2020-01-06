@@ -12,20 +12,21 @@ public class Main {
         double aConvertir=0;
         double convertit=0;
         String str1=new String("Convetisseur de degrés celcius et de degrés fahrenheit");
+
         System.out.println("                                                 ");
         System.out.println(str1.toUpperCase());
-        System.out.println("-------------------------------------------------");
-        System.out.println("                                                 ");
+        System.out.println("-------------------------------------------------\n");
+
 
         do { //Boucle principale
             do {
-                System.out.println("Choisissez le mode de convertion");
+                System.out.println("Choisissez le mode de convertion:\n");
                 System.out.println("1-Convertisseur Celsius-Fahrenheit");
                 System.out.println("2-Convertisseur Fahrenheit-Celsius");
                 mode=sc.nextLine().charAt(0);
 
                 if (mode != '1' && mode !='2') {
-                    System.out.println("Mets 1 ou 2 frerr");
+                    System.out.println("Mode inconnus, veuillez choisir entre le mode 1 et le mode 2.");
                 }
             } while (mode !='1' && mode !='2');
 
@@ -34,32 +35,25 @@ public class Main {
 
                 sc.nextLine();
 
-
-            if(mode == '1'){
+                //Mode de conversion
+            if(mode == '1'){//Celcius to Fahrenheit
                 convertit = ((9.0/5.0) * aConvertir) + 32.0;
-                System.out.print(aConvertir + " °C correspond à : ^"+ convertit+ " °F.");
+                System.out.println(aConvertir + " °C correspond à : "+ convertit+ " °F.\n");
             }
-            else{
+            else{//Fahrenheit to Celcius
                 convertit = ((aConvertir - 32) * 5) / 9;
-                System.out.print(aConvertir + " °F correspond à : "+ convertit + " °C.");
+                System.out.println(aConvertir + " °F correspond à : "+ convertit + " °C.\n");
             }
                 do {
-                    System.out.println("Souhaitez-vous convertir une autre température ? (O/N");
+                    System.out.println("Souhaitez-vous convertir une autre température ? (O/N)");
                     reponse =sc.nextLine().charAt(0);
 
-                    if (reponse !='O' && reponse !='N');{
-                        System.out.println("Veuillez bien répondre.");
-                    }
 
                 } while (reponse !='O' && reponse !='N');
 
-
         }while(reponse == 'O' );
 
-        System.out.println("Bye.");
-    }
+        System.out.println("Au revoir !");
+    }//FIn du programme
 
-        public static double arrondi(double A, int B) {
-        return (double) ( (int) (A * Math.pow(10, B) + .5)) / Math.pow(10, B);
-        }
 }
