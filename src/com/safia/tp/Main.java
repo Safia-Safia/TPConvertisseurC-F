@@ -1,5 +1,6 @@
 package com.safia.tp;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +12,8 @@ public class Main {
         char reponse= ' ';
         double aConvertir=0;
         double convertit=0;
-        String str1=new String("Convetisseur de degrés celcius et de degrés fahrenheit");
+        String str1=new String(
+                "Convetisseur de degrés celcius et de degrés fahrenheit");
 
         System.out.println("                                                 ");
         System.out.println(str1.toUpperCase());
@@ -30,10 +32,13 @@ public class Main {
                 }
             } while (mode !='1' && mode !='2');
 
-                System.out.println("Température à convertir :");
-                aConvertir = sc.nextDouble();
 
-                sc.nextLine();
+            System.out.println("Température à convertir :");
+                        try {
+                            aConvertir = sc.nextDouble();
+
+                            sc.nextLine();
+
 
                 //Mode de conversion
             if(mode == '1'){//Celcius to Fahrenheit
@@ -44,10 +49,15 @@ public class Main {
                 convertit = ((aConvertir - 32) * 5) / 9;
                 System.out.println(aConvertir + " °F correspond à : "+ convertit + " °C.\n");
             }
-                do {
-                    System.out.println("Souhaitez-vous convertir une autre température ? (O/N)");
-                    reponse =sc.nextLine().charAt(0);
 
+            //Fin du try
+                        } catch (InputMismatchException e) {
+                            System.out.println("Erreur, veuillez uniquement saisir des chiffres.\n");
+                        }
+
+
+                do { System.out.println("Souhaitez-vous convertir une autre température ? (O/N)");
+                    reponse=sc.nextLine().charAt(0);
 
                 } while (reponse !='O' && reponse !='N');
 
@@ -55,5 +65,4 @@ public class Main {
 
         System.out.println("Au revoir !");
     }//FIn du programme
-
-}
+}//fermeture main class
